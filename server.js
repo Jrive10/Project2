@@ -1,56 +1,65 @@
-// // IMPORTS
-// const express = require('express')
-// const app = express()
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+require('dotenv').config();
 
-// require('dotenv').config()
+const PORT = process.env.PORT || 3000;
+const mongoURI = process.env.MONGO_URI;
 
-// const PORT = process.env.PORT || 3000
+// Import the Recipe model and recipesController
+const Recipe = require('./models/recipe');
+const recipesController = require('./controllers/recipesController');
 
-// // setup database 
-// const mongoose = require('mongoose')
-// const mongoURI = process.env.MONGO_URI
+// Middleware
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
-// // connect to mongo 
-// mongoose.connect(mongoURI)
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
 
-// const db = mongoose.connection
-// // optional create status messages to check mongo connection 
-// db.on('error', (err) => { console.log('ERROR: ' , err)})
-// db.on('connected', () => { console.log('mongo connected')})
-// db.on('disconnected', () => { console.log('mongo disconnected')})
+db.on('error', (err) => {
+  console.error('MongoDB connection error:', err);
+});
 
-// app.get('/', (req, res) => {
-//    res.send('Hello world!')
-// })
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+  startServer();
+});
 
-// app.listen(PORT, () => {
-//     console.log(`Server is listening on PORT: ${PORT}`)
-// })
+function startServer() {
+  app.get('/', (req, res) => {
+    res.send('Hello world!');
+  });
 
-// app.js
-const express = require('express')
-const app = express()
-const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
+  // Index - Display a list of recipes
+  app.get('/recipes', recipesController.index);
 
-// Connect to MongoDB (replace 'your-database-url' with your actual MongoDB connection URL)
-mongoose.connect('mongodb://your-database-url', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+  // New - Display a form to create a new recipe
+  app.get('/recipes/new', recipesController.new);
 
-// Set up body-parser middleware
-app.use(bodyParser.urlencoded({ extended: true }))
+  // Create - Add a new recipe to the database
+  app.post('/recipes', recipesController.create);
 
-// Set EJS as the template engine
-app.set('view engine', 'ejs')
+  // Show - Display details of a specific recipe
+  app.get('/recipes/:id', recipesController.show);
 
-// Define routes 
-const indexRoutes = require('./routes/index')
-app.use('/', indexRoutes)
+  // Edit - Display a form to edit an existing recipe
+  app.get('/recipes/:id/edit', recipesController.edit);
 
-// Start the server
-const port = process.env.PORT || 3000
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`)
-})
+  // Update - Update an existing recipe in the database
+  app.put('/recipes/:id', recipesController.update);
+
+  // Destroy - Delete a recipe from the database
+  app.delete('/recipes/:id', recipesController.destroy);
+
+  // Start the server
+  app.listen(PORT, () => {
+    console.log(`Server is listening on PORT: ${PORT}`);
+  });
+}
+
+
+
