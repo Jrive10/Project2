@@ -28,29 +28,29 @@
 // })
 
 // app.js
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const express = require('express')
+const app = express()
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 
 // Connect to MongoDB (replace 'your-database-url' with your actual MongoDB connection URL)
 mongoose.connect('mongodb://your-database-url', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+})
 
 // Set up body-parser middleware
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // Set EJS as the template engine
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs')
 
 // Define routes 
-const indexRoutes = require('./routes/index');
-app.use('/', indexRoutes);
+const indexRoutes = require('./routes/index')
+app.use('/', indexRoutes)
 
 // Start the server
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+  console.log(`Server is running on port ${port}`)
+})
