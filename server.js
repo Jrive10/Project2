@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 require('dotenv').config(); // Load environment variables from .env file
 
-app.listen(process.env.PORT || 3000);
 const PORT = process.env.PORT || 3000;
 const mongoURI = process.env.MONGO_URI;
 
@@ -86,6 +85,9 @@ function startServer() {
     console.log(`Server is listening on PORT: ${PORT}`);
   });
 }
+
+
+
 
 
 
