@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Sharing App</title>
+    <title>Plate Poetry</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <h1>Recipes</h1>
-    <ul>
+    <h1>Welcome To Plate Poetry</h1>
+    <ul class="recipe-list">
         <% recipes.forEach((recipe) => { %>
-            <li><a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a></li>
+            <li class="recipe-item">
+                <a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a>
+                <p class="recipe-description"><%= recipe.description %></p>
+            </li>
         <% }); %>
     </ul>
-    <a href="/recipes/new">Create a New Recipe</a>
+
+    <a href="/recipes/new" class="create-recipe-link">Create a New Recipe</a>
 </body>
 </html>
+

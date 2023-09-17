@@ -7,20 +7,20 @@
 </head>
 <body>
     <h1>Create a New Recipe</h1>
-    <form action="/recipes" method="POST">
+    <form action="/recipes" method="POST" class="new-recipe-form" style="max-width: 500px; margin: 0 auto;">
         <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required>
-        <br>
+        <input type="text" id="title" name="title" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        
         <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea>
-        <br>
-        <label for="ingredients">Ingredients (comma-separated):</label>
-        <input type="text" id="ingredients" name="ingredients" required>
-        <br>
+        <textarea id="description" name="description" rows="4" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea>
+        
+        <label for="ingredients">Ingredients:</label>
+        <input type="text" id="ingredients" name="ingredients" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        
         <label for="instructions">Instructions:</label>
-        <textarea id="instructions" name="instructions" required></textarea>
-        <br>
-        <button type="submit">Create Recipe</button>
+        <textarea id="instructions" name="instructions" rows="4" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea>
+
+        <button type="submit" style="padding: 10px 20px; background-color: #007BFF; color: #fff; border: none; cursor: pointer;">Create Recipe</button>
     </form>
     <a href="/recipes">Back to Recipes</a>
 </body>

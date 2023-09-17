@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-require('dotenv').config();
+require('dotenv').config(); // Load environment variables from .env file
 
 const PORT = process.env.PORT || 3000;
 const mongoURI = process.env.MONGO_URI;
@@ -12,26 +12,51 @@ const mongoURI = process.env.MONGO_URI;
 const Recipe = require('./models/recipe');
 const recipesController = require('./controllers/recipesController');
 
+
 // Middleware
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+app.use('/images', express.static('images'));
 
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+    startServer();
+  })
+  .catch((err) => {
+    console.error('MongoDB connection error:', err);
+  });
 
-db.on('error', (err) => {
-  console.error('MongoDB connection error:', err);
+function startServer() {
+  
+
+  app.listen(PORT, () => {
+    console.log(`Server is listening on PORT: ${PORT}`);
+  });
+}
+
+// Handle unhandled promise rejections (just in case)
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled Promise Rejection:', err);
 });
 
-db.once('open', () => {
-  console.log('Connected to MongoDB');
-  startServer();
+// Handle uncaught exceptions (just in case)
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
 });
 
 function startServer() {
-  app.get('/', (req, res) => {
-    res.send('Hello world!');
+  app.get('/', async (req, res) => {
+    try {
+      // Retrieve recipes from the database
+      const recipes = await Recipe.find();
+      // Render the main page view with the retrieved recipes
+      res.render('index.ejs', { recipes });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Server Error');
+    }
   });
 
   // Index - Display a list of recipes

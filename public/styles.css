@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPrBZzQ21_F40qrELxKNYfnqmHVhgD3Z1A3w&usqp=CAU'); 
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #007BFF;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #007BFF;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.new-recipe-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.new-recipe-form input,
+.new-recipe-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.new-recipe-form button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.new-recipe-form button:hover {
+  background-color: #0056b3;
+}
+recipe-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Styles for individual recipe items */
+.recipe-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the recipe title */
+.recipe-item a {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+}
+
+/* Styles for the recipe description */
+.recipe-description {
+  margin-top: 10px;
+  color: #333;
+}
+
+/* Style for the "Create a New Recipe" link */
+.create-recipe-link {
+  display: block;
+  margin-top: 20px;
+  text-decoration: none;
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.create-recipe-link:hover {
+  background-color: #0056b3;
+}
