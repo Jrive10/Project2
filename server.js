@@ -4,14 +4,21 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 require('dotenv').config(); // Load environment variables from .env file
+const path = require('path');
+
 
 const PORT = process.env.PORT || 3000;
 const mongoURI = process.env.MONGO_URI;
 
+// Set EJS as the view engine
+app.set('view engine', 'ejs');
+
+// Specify the directory where your views are located
+app.set('views', path.join(__dirname, 'views'));
+
 // Import the Recipe model and recipesController
 const Recipe = require('./models/recipe');
 const recipesController = require('./controllers/recipesController');
-
 
 // Middleware
 app.use(express.static('public'));
@@ -28,24 +35,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     console.error('MongoDB connection error:', err);
   });
 
-function startServer() {
-  
-
-  app.listen(PORT, () => {
-    console.log(`Server is listening on PORT: ${PORT}`);
-  });
-}
-
-// Handle unhandled promise rejections (just in case)
-process.on('unhandledRejection', (err) => {
-  console.error('Unhandled Promise Rejection:', err);
-});
-
-// Handle uncaught exceptions (just in case)
-process.on('uncaughtException', (err) => {
-  console.error('Uncaught Exception:', err);
-});
-
+// Define the startServer function
 function startServer() {
   app.get('/', async (req, res) => {
     try {
@@ -85,6 +75,17 @@ function startServer() {
     console.log(`Server is listening on PORT: ${PORT}`);
   });
 }
+
+// Handle unhandled promise rejections (just in case)
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled Promise Rejection:', err);
+});
+
+// Handle uncaught exceptions (just in case)
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+});
+
 
 
 

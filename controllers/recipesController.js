@@ -5,7 +5,7 @@ const recipesController = {
   index: async (req, res) => {
     try {
       const recipes = await Recipe.find();
-      res.render('recipes/index.ejs', { recipes });
+      res.render('index', { recipes });
     } catch (err) {
       console.error(err);
       res.status(500).send('Server Error');
@@ -14,7 +14,7 @@ const recipesController = {
 
   // New - Display a form to create a new recipe
   new: (req, res) => {
-    res.render('recipes/new.ejs');
+    res.render('new');
   },
 
   // Create - Add a new recipe to the database
@@ -39,7 +39,7 @@ const recipesController = {
   show: async (req, res) => {
     try {
       const recipe = await Recipe.findById(req.params.id);
-      res.render('recipes/show.ejs', { recipe });
+      res.render('show', { recipe });
     } catch (err) {
       console.error(err);
       res.status(500).send('Server Error');
@@ -50,7 +50,7 @@ const recipesController = {
   edit: async (req, res) => {
     try {
       const recipe = await Recipe.findById(req.params.id);
-      res.render('recipes/edit.ejs', { recipe });
+      res.render('edit', { recipe });
     } catch (err) {
       console.error(err);
       res.status(500).send('Server Error');
@@ -67,7 +67,7 @@ const recipesController = {
         ingredients: ingredients.split(',').map((ingredient) => ingredient.trim()),
         instructions,
       });
-      res.redirect('/recipes/' + req.params.id);
+      res.redirect('/' + req.params.id);
     } catch (err) {
       console.error(err);
       res.status(500).send('Server Error');
