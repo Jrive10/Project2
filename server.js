@@ -13,8 +13,9 @@ const mongoURI = process.env.MONGO_URI;
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 
-// Specify the directory where your views are located
+// Specify the directory where views are located
 app.set('views', path.join(__dirname, 'views'));
+
 
 // Import the Recipe model and recipesController
 const Recipe = require('./models/recipe');
@@ -24,16 +25,9 @@ const recipesController = require('./controllers/recipesController');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-app.use('/images', express.static('images'));
 
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('Connected to MongoDB');
-    startServer();
-  })
-  .catch((err) => {
-    console.error('MongoDB connection error:', err);
-  });
+
+
 
 // Define the startServer function
 function startServer() {
@@ -76,6 +70,15 @@ function startServer() {
   });
 }
 
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+    startServer();
+  })
+  .catch((err) => {
+    console.error('MongoDB connection error:', err);
+  });
+  
 // Handle unhandled promise rejections (just in case)
 process.on('unhandledRejection', (err) => {
   console.error('Unhandled Promise Rejection:', err);

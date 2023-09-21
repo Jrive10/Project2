@@ -1,27 +1,46 @@
-body {
+/* body {
   font-family: Arial, sans-serif;
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPrBZzQ21_F40qrELxKNYfnqmHVhgD3Z1A3w&usqp=CAU'); 
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI0dZZqLERhdtEZeDpiwqoGcsJl-BpUAtypw&usqp=CAU'); 
+  background-position: center;
   background-size: cover; 
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-attachment: fixed; 
-  margin: 0;
-  padding: 20px;
+  margin: 50px;
+  padding: 50px;
+  transform: scale(1) 
+  
+  
+} */
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 50px;
+  padding: 50px;
+  background-position:center ;
+  background-repeat: no-repeat;
+  background-size: 98% 98%;
+  background-attachment:fixed;
+  background-color: teal;
+  
+
 }
+
+ 
+
 
 .container {
-  max-width: 800px;
+  max-width: auto;
   margin: 0 auto;
+  
 }
 
-header {
-  background-color: #007BFF;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-}
+
 
 h1 {
-  font-size: 2em;
+  font-size: 7em;
+  font-family: cursive;
+  color: teal;
+ 
+  text-align: center;
 }
 
 ul {
@@ -35,38 +54,39 @@ li {
 
 a {
   text-decoration: none;
-  color: #007BFF;
+  color: teal;
 }
 
 a:hover {
   text-decoration: underline;
 }
 
-.new-recipe-form {
-  background-color: #fff;
+/* .new-recipe-form {
+  background-color: teal;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+  
+} */
 
-.new-recipe-form input,
+/* .new-recipe-form input,
 .new-recipe-form textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
-}
+} */
 
-.new-recipe-form button {
+/* .new-recipe-form button {
   padding: 10px 20px;
-  background-color: #007BFF;
+  background-color: teal;
   color: #fff;
   border: none;
   cursor: pointer;
-}
+} */
 
-.new-recipe-form button:hover {
+/* .new-recipe-form button:hover {
   background-color: #0056b3;
-}
+} */
 recipe-list {
   list-style: none;
   padding: 0;
@@ -80,12 +100,13 @@ recipe-list {
   padding: 20px;
   margin: 10px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-/* Styles for the recipe title */
+/*Styles for the recipe title */
 .recipe-item a {
   text-decoration: none;
-  color: #007BFF;
+  color: black;
   font-weight: bold;
 }
 
@@ -100,7 +121,7 @@ recipe-list {
   display: block;
   margin-top: 20px;
   text-decoration: none;
-  background-color: #007BFF;
+  background-color: teal;
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;

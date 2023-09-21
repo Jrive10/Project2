@@ -1,4 +1,4 @@
-const Recipe = require('../models/recipe'); // Adjust the path as needed
+const Recipe = require('../models/recipe'); 
 
 const recipesController = {
   // Index - Display a list of recipes
@@ -20,12 +20,13 @@ const recipesController = {
   // Create - Add a new recipe to the database
   create: async (req, res) => {
     try {
-      const { title, description, ingredients, instructions } = req.body;
+      const { title, description, ingredients, instructions, image } = req.body;
       const recipe = new Recipe({
         title,
         description,
         ingredients: ingredients.split(',').map((ingredient) => ingredient.trim()),
         instructions,
+        image, 
       });
       await recipe.save();
       res.redirect('/recipes');
@@ -34,6 +35,7 @@ const recipesController = {
       res.status(500).send('Server Error');
     }
   },
+  
 
   // Show - Display details of a specific recipe
   show: async (req, res) => {
@@ -58,21 +60,22 @@ const recipesController = {
   },
 
   // Update - Update an existing recipe in the database
-  update: async (req, res) => {
-    try {
-      const { title, description, ingredients, instructions } = req.body;
-      await Recipe.findByIdAndUpdate(req.params.id, {
-        title,
-        description,
-        ingredients: ingredients.split(',').map((ingredient) => ingredient.trim()),
-        instructions,
-      });
-      res.redirect('/' + req.params.id);
-    } catch (err) {
-      console.error(err);
-      res.status(500).send('Server Error');
-    }
-  },
+update: async (req, res) => {
+  try {
+    const { title, description, ingredients, instructions } = req.body;
+    await Recipe.findByIdAndUpdate(req.params.id, {
+      title,
+      description,
+      ingredients: ingredients.split(',').map((ingredient) => ingredient.trim()),
+      instructions,
+    });
+    res.redirect('/recipes/' + req.params.id); 
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+},
+
 
   // Destroy - Delete a recipe from the database
   destroy: async (req, res) => {
