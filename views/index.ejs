@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plate Poetry</title>
-    <link rel="stylesheet" href="/styles.css">
-    <style>body{
-        background-image: url("https://www.bypeople.com/wp-content/uploads/2018/09/stock-food-photos-bundle-bypeople-deals.png");
-        
-        
-        }</style>
-</head>
-<body>
+<%- include('./partials/header.ejs') %>
     <h1>Welcome To Plate Poetry</h1>
     
     <ul class="recipe-list">
@@ -27,5 +14,6 @@
 
     <a href="/recipes/new" class="create-recipe-link">Create a New Recipe</a>
 </body>
-</html>
+<%- include('./partials/footer.ejs') %>
+
 
