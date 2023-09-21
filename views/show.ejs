@@ -55,10 +55,26 @@
             font-size: 16px;
             border-radius: 5px;
         }
-       
+
+        form[action^="/recipes/"] button[type="submit"] {
+          background-color: red;
+         color: white;
+         border: none;
+         padding: 10px 20px;
+         border-radius: 5px;
+         cursor: pointer;
+         align-items: center;
+        }
+
+        form[action^="/recipes/"] button[type="submit"]:hover {
+          background-color: darkred;
+        }
 
         
-    </style>
+
+
+      
+</style>
     
 </head>
 <body>
@@ -78,6 +94,7 @@
     <a href="/recipes/<%= recipe._id %>/edit">Edit Recipe</a>
     <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete Recipe</button>
+        
     </form>
 </body>
 </html>

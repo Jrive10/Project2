@@ -1,16 +1,4 @@
-/* body {
-  font-family: Arial, sans-serif;
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI0dZZqLERhdtEZeDpiwqoGcsJl-BpUAtypw&usqp=CAU'); 
-  background-position: center;
-  background-size: cover; 
-  background-repeat: repeat;
-  background-attachment: fixed; 
-  margin: 50px;
-  padding: 50px;
-  transform: scale(1) 
-  
-  
-} */
+
 body{
   font-family: Arial, Helvetica, sans-serif;
   margin: 50px;
@@ -24,16 +12,11 @@ body{
 
 }
 
- 
-
-
-.container {
+ .container {
   max-width: auto;
   margin: 0 auto;
   
 }
-
-
 
 h1 {
   font-size: 7em;
@@ -61,32 +44,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* .new-recipe-form {
-  background-color: teal;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
-} */
-
-/* .new-recipe-form input,
-.new-recipe-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-} */
-
-/* .new-recipe-form button {
-  padding: 10px 20px;
-  background-color: teal;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-} */
-
-/* .new-recipe-form button:hover {
-  background-color: #0056b3;
-} */
 recipe-list {
   list-style: none;
   padding: 0;
@@ -131,4 +88,5 @@ recipe-list {
 
 .create-recipe-link:hover {
   background-color: #0056b3;
+
 }
