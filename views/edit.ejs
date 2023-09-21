@@ -66,16 +66,17 @@
     <h1>Edit <%= recipe.title %></h1>
     <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
         <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-        
+        <input type="text" id="title" name="title" value="<%= recipe.title %>" required>
+        <br>
         <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="4" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea>
-        
-        <label for="ingredients">Ingredients:</label>
-        <input type="text" id="ingredients" name="ingredients" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-        
+        <textarea id="description" name="description" required><%= recipe.description %></textarea>
+        <br>
+        <label for="ingredients">Ingredients (comma-separated):</label>
+        <input type="text" id="ingredients" name="ingredients" value="<%= recipe.ingredients.join(', ') %>" required>
+        <br>
         <label for="instructions">Instructions:</label>
-        <textarea id="instructions" name="instructions" rows="4" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea>
+        <textarea id="instructions" name="instructions" required><%= recipe.instructions %></textarea>
+        <br>
         <label for="recipe">Image URL:</label>
         <input type="text" placeholder="Image URL" id="recipe" name="img"/>
         <button type="submit">Update Recipe</button>
