@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config(); 
 const path = require('path');
 
 

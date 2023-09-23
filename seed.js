@@ -1,10 +1,10 @@
-const recipe = require('./models/recipe')
-const mongoose = require('mongoose')
+const recipe = require('./models/recipe');
+const mongoose = require('mongoose');
 
 const mongoURI = "mongodb+srv://Jrive10:Jrivera11@jrprojectsdb.ca8yti7.mongodb.net/?"
-const db = mongoose.connection
+const db = mongoose.connection;
 
-mongoose.connect(mongoURI)
+mongoose.connect(mongoURI);
 
 recipe.create([
   {
@@ -22,5 +22,5 @@ recipe.create([
 ]).then((recipe) => {
   console.log(recipe)
   db.close()
-})
+});
 
